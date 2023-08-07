@@ -1,8 +1,8 @@
 [Blade]
-bestRelicSet=LONGEVIOUS_DISCIPLE
-altRelicSet=EAGLE_OF_TWILIGHT_LINE,MESSENGER_TRAVERSING_HACKERSPACE
-planetarySet=INERT_SALSOTTO
-altPlanetarySet=RUTILANT_ARENA
+bestRelicSet=longevious disciple
+altRelicSet=eagle of twilight line,messenger traversing hackerspace
+planetarySet=inert salsotto
+altPlanetarySet=rutilant arena
 mainBodyStat=CRIT_DMG,CRIT_DMG
 mainFeetStat=SPD,HPp
 mainPlanarSphereStat=WIND_DMG_BOOST,HPp
@@ -11,10 +11,10 @@ subStatTier_1=CRIT_RATE,CRIT_DMG
 subStatTier_2=SPD
 subStatTier_3=HPp
 [Himeko]
-bestRelicSet=FIRESMITH_OF_LAVA_FORGING,MUSKETEER_OF_WILD_WHEAT
-altRelicSet=MESSENGER_TRAVERSING_HACKERSPACE
-planetarySet=SPACE_SEALING_STATION
-altPlanetarySet=INERT_SALSOTTO
+bestRelicSet=firesmith of lava forging,musketeer of wild wheat
+altRelicSet=messenger traversing hackerspace
+planetarySet=space sealing station
+altPlanetarySet=inert salsotto
 mainBodyStat=CRIT_RATE
 mainFeetStat=SPD
 mainPlanarSphereStat=FIRE_DMG_BOOST

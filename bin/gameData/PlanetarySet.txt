@@ -1,10 +1,10 @@
-BELOBOG_OF_THE_ARCHITECTS
-BROKEN_KEEL
-CELESTIAL_DIFFERENTIATOR
-FLEET_OF_THE_AGELESS
-INERT_SALSOTTO
-PAN_GALACTIC_COMMERCIAL_ENTERPRISE
-RUTILANT_ARENA
-SPACE_SEALING_STATION
-SPRIGHTLY_VONWACQ
-TALIA_KINGDOM_OF_BANDITRY
+belobog of the architects
+broken keel
+celestial differentiator
+fleet of the ageless
+inert salsotto
+pan galactic commercial enterprise
+rutilant arena
+space sealing station
+sprightly vonwacq
+talia kingdom of banditry
