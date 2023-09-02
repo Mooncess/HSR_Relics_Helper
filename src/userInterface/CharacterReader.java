@@ -23,7 +23,7 @@ public class CharacterReader {
             	character.setAltRelicSet(CharacterReader.readerForSets(br.readLine()));
             	
             	line = br.readLine();
-            	int equalsIndex = line.indexOf("="); // Находим индекс знака "="
+            	int equalsIndex = line.indexOf("=");
                 String value = line.substring(equalsIndex + 1);
                 character.setPlanetarySet(value);
                 
@@ -46,32 +46,32 @@ public class CharacterReader {
 	}
 	
 	private static String[] readerForSets(String line) {
-    	int equalsIndex = line.indexOf("="); // Находим индекс знака "="
-        String values = line.substring(equalsIndex + 1); // Получаем подстроку после знака "="
-        String[] valuesArray = values.split(","); // Разделяем подстроку по запятым и получаем массив значений
+    	int equalsIndex = line.indexOf("=");
+        String values = line.substring(equalsIndex + 1);
+        String[] valuesArray = values.split(",");
     	return valuesArray; 
     }
     
     private static MainStat[] readerForMainStat(String line) {
-    	int equalsIndex = line.indexOf("="); // Находим индекс знака "="
-        String values = line.substring(equalsIndex + 1); // Получаем подстроку после знака "="
-        String[] valuesArray = values.split(","); // Разделяем подстроку по запятым и получаем массив значений
+    	int equalsIndex = line.indexOf("=");
+        String values = line.substring(equalsIndex + 1);
+        String[] valuesArray = values.split(",");
         MainStat[] result = new MainStat[valuesArray.length];
         
         for (int i = 0; i < valuesArray.length; i++) {
-            result[i] = MainStat.valueOf(valuesArray[i]); // преобразуем строку в значение enum
+            result[i] = MainStat.valueOf(valuesArray[i]);
         }
         return result; 
     }
     
     private static SubsidiaryStat[] readerForSubsidiaryStat(String line) {
-    	int equalsIndex = line.indexOf("="); // Находим индекс знака "="
-        String values = line.substring(equalsIndex + 1); // Получаем подстроку после знака "="
-        String[] valuesArray = values.split(","); // Разделяем подстроку по запятым и получаем массив значений
+    	int equalsIndex = line.indexOf("=");
+        String values = line.substring(equalsIndex + 1);
+        String[] valuesArray = values.split(",");
         SubsidiaryStat[] result = new SubsidiaryStat[valuesArray.length];
         
         for (int i = 0; i < valuesArray.length; i++) {
-            result[i] = SubsidiaryStat.valueOf(valuesArray[i]); // преобразуем строку в значение enum
+            result[i] = SubsidiaryStat.valueOf(valuesArray[i]);
         }
         return result; 
     }

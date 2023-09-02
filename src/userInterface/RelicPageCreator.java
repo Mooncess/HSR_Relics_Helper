@@ -9,34 +9,37 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
+import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTable;
 
 public class RelicPageCreator {
-	public static JPanel createRelicPage() {
+	public static JPanel createRelicPage(JTable table, List<gameData.Character> characterList) {
 		JPanel relicPage = new JPanel(new BorderLayout(10, 10));
-       
-        // relicPage.setLayout(new GridLayout(4, 1));
         
         relicPage.setLayout(new FlowLayout());
         
         Dimension sizeForMiddlePanel = new Dimension(400, 30);
         Dimension sizeForButtonPanel = new Dimension(400, 30);
         Dimension sizeForMainStatPanel = new Dimension(400, 240);
-        Dimension sizeForSubStatPanel = new Dimension(400, 200);
+        Dimension sizeForSubStatPanel = new Dimension(400, 90);
         
         JPanel middlePanel = new JPanel();
         JPanel buttonPanel = new JPanel();
         JPanel mainStatPanel = new JPanel();
         JPanel subStatPanel = new JPanel();
-        
-        
+        JPanel checkButtonPanel = new JPanel();
+                
         middlePanel.setPreferredSize(sizeForMiddlePanel);
         buttonPanel.setPreferredSize(sizeForButtonPanel);
         mainStatPanel.setPreferredSize(sizeForMainStatPanel);
@@ -272,10 +275,115 @@ public class RelicPageCreator {
         subStatPanel.add(critRate);
         subStatPanel.add(critDmg);
         
+        JButton checkButton = new JButton("Check");
+        checkButtonPanel.add(checkButton);
+        
+        checkButton.addActionListener(new ActionListener() {
+        	@Override
+            public void actionPerformed(ActionEvent e) {
+        		String relicSet = (String) comboBox.getSelectedItem();
+            	
+            	JRadioButton selectedRadioButton = null;
+            	
+            	String selectedEquipment = null;
+            	String selectedMainStat = null;
+            	ArrayList<String> subStats = new ArrayList<>();
+            	
+            	Enumeration<AbstractButton> buttons1 = buttonGroup1.getElements();
+            	while (buttons1.hasMoreElements()) {
+            	    JRadioButton currentRadioButton = (JRadioButton) buttons1.nextElement();
+            	    if (currentRadioButton.isSelected()) {
+            	        selectedRadioButton = currentRadioButton;
+            	        break;
+            	    }
+            	}
+
+            	if (selectedRadioButton != null) {
+            	    selectedEquipment = selectedRadioButton.getText();
+            	    selectedRadioButton = null;
+            	} else {
+            		JOptionPane.showMessageDialog(null, "Equipment not selected");
+            		return;
+            	}
+            	
+            	Enumeration<AbstractButton> buttons2 = buttonGroup2.getElements();
+            	while (buttons2.hasMoreElements()) {
+            	    JRadioButton currentRadioButton = (JRadioButton) buttons2.nextElement();
+            	    if (currentRadioButton.isSelected()) {
+            	        selectedRadioButton = currentRadioButton;
+            	        break;
+            	    }
+            	}
+
+            	if (selectedRadioButton != null) {
+            		selectedMainStat = selectedRadioButton.getText();
+            	} else {
+            		JOptionPane.showMessageDialog(null, "The main stat is not selected");
+            		return;
+            	}
+        		
+        		if (spd.isSelected()) {
+        			subStats.add(spd.getText());
+        		}
+                
+        		if (hp.isSelected()) {
+        			subStats.add(hp.getText());
+        		}
+
+        		if (atk.isSelected()) {
+        			subStats.add(atk.getText());
+        		}
+
+        		if (def.isSelected()) {
+        			subStats.add(def.getText());
+        		}
+
+        		if (hpp.isSelected()) {
+        			subStats.add(hpp.getText());
+        		}
+
+        		if (atkp.isSelected()) {
+        			subStats.add(atkp.getText());
+        		}
+
+        		if (defp.isSelected()) {
+        			subStats.add(defp.getText());
+        		}
+
+        		if (breakEffect.isSelected()) {
+        			subStats.add(breakEffect.getText());
+        		}
+
+        		if (effectHitRate.isSelected()) {
+        			subStats.add(effectHitRate.getText());
+        		}
+
+        		if (effectRes.isSelected()) {
+        			subStats.add(effectRes.getText());
+        		}
+
+        		if (critRate.isSelected()) {
+        			subStats.add(critRate.getText());
+        		}
+
+        		if (critDmg.isSelected()) {
+        			subStats.add(critDmg.getText());
+        		}
+                
+                if (subStats.size() > 4) {
+                	JOptionPane.showMessageDialog(null, "Too many subsidiary stats selected");
+                	return;
+                }
+                
+                TableEditor.updateTable(table);
+        	}
+        });
+        
         relicPage.add(middlePanel);
         relicPage.add(buttonPanel);
         relicPage.add(mainStatPanel);
         relicPage.add(subStatPanel);
+        relicPage.add(checkButtonPanel);
         
         return relicPage;
     }

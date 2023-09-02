@@ -22,7 +22,7 @@ import gameData.CharacterBuilder;
 
 public class ApplicationWindow extends JFrame { 
 	final int WIDTH = 800;
-	final int HEIGHT = 500;
+	final int HEIGHT = 535;
     public ApplicationWindow() {
     	List<gameData.Character> characterList = new ArrayList<>();
     	CharacterReader.getCharacterList(characterList);
@@ -64,7 +64,7 @@ public class ApplicationWindow extends JFrame {
         CardLayout cardLayout = new CardLayout();
         JPanel lowerPanel = new JPanel(cardLayout);
         
-        JPanel relicPage = RelicPageCreator.createRelicPage();
+        JPanel relicPage = RelicPageCreator.createRelicPage(table, characterList);
 
         frame.getContentPane().add(relicPage);
         
@@ -101,6 +101,7 @@ public class ApplicationWindow extends JFrame {
         frame.add(rightPanel);
 
         // Отображение главного окна
+        frame.setLocationRelativeTo(null); // Центрирование окна
         frame.setVisible(true);
     }
 }
