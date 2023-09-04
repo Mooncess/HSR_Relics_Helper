@@ -23,6 +23,9 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
 
+import enums.MainStat;
+import enums.SubsidiaryStat;
+
 public class RelicPageCreator {
 	public static JPanel createRelicPage(JTable table, List<gameData.Character> characterList) {
 		JPanel relicPage = new JPanel(new BorderLayout(10, 10));
@@ -286,8 +289,8 @@ public class RelicPageCreator {
             	JRadioButton selectedRadioButton = null;
             	
             	String selectedEquipment = null;
-            	String selectedMainStat = null;
-            	ArrayList<String> subStats = new ArrayList<>();
+            	MainStat selectedMainStat = null;
+            	ArrayList<SubsidiaryStat> subStats = new ArrayList<>();
             	
             	Enumeration<AbstractButton> buttons1 = buttonGroup1.getElements();
             	while (buttons1.hasMoreElements()) {
@@ -316,66 +319,66 @@ public class RelicPageCreator {
             	}
 
             	if (selectedRadioButton != null) {
-            		selectedMainStat = selectedRadioButton.getText();
+            		selectedMainStat = MainStat.valueOf(selectedRadioButton.getText().replace(" ", "_").replace("%", "p"));
             	} else {
             		JOptionPane.showMessageDialog(null, "The main stat is not selected");
             		return;
             	}
         		
         		if (spd.isSelected()) {
-        			subStats.add(spd.getText());
+        			subStats.add(SubsidiaryStat.SPD);
         		}
                 
         		if (hp.isSelected()) {
-        			subStats.add(hp.getText());
+        			subStats.add(SubsidiaryStat.HP);
         		}
 
         		if (atk.isSelected()) {
-        			subStats.add(atk.getText());
+        			subStats.add(SubsidiaryStat.ATK);
         		}
 
         		if (def.isSelected()) {
-        			subStats.add(def.getText());
+        			subStats.add(SubsidiaryStat.DEF);
         		}
 
         		if (hpp.isSelected()) {
-        			subStats.add(hpp.getText());
+        			subStats.add(SubsidiaryStat.HPp);
         		}
 
         		if (atkp.isSelected()) {
-        			subStats.add(atkp.getText());
+        			subStats.add(SubsidiaryStat.ATKp);
         		}
 
         		if (defp.isSelected()) {
-        			subStats.add(defp.getText());
+        			subStats.add(SubsidiaryStat.DEFp);
         		}
 
         		if (breakEffect.isSelected()) {
-        			subStats.add(breakEffect.getText());
+        			subStats.add(SubsidiaryStat.BREAK_EFFECT);
         		}
 
         		if (effectHitRate.isSelected()) {
-        			subStats.add(effectHitRate.getText());
+        			subStats.add(SubsidiaryStat.EFFECT_HIT_RATE);
         		}
 
         		if (effectRes.isSelected()) {
-        			subStats.add(effectRes.getText());
+        			subStats.add(SubsidiaryStat.EFFECT_RES);
         		}
 
         		if (critRate.isSelected()) {
-        			subStats.add(critRate.getText());
+        			subStats.add(SubsidiaryStat.CRIT_RATE);
         		}
 
         		if (critDmg.isSelected()) {
-        			subStats.add(critDmg.getText());
+        			subStats.add(SubsidiaryStat.CRIT_DMG);
         		}
                 
-                if (subStats.size() > 4) {
-                	JOptionPane.showMessageDialog(null, "Too many subsidiary stats selected");
+                if (subStats.size() != 4) {
+                	JOptionPane.showMessageDialog(null, "4 subsidiary stats must be selected");
                 	return;
                 }
                 
-                TableEditor.updateTable(table);
+                RelicChecker.checkRelic(table, characterList, relicSet, selectedEquipment, selectedMainStat, subStats);
         	}
         });
         
